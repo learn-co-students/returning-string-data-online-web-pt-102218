@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update]
 
   def index
-    @posts = Post.all
+    @postss = Post.all
   end
 
   def show
@@ -25,6 +25,11 @@ class PostsController < ApplicationController
     @post.update(post_params)
     redirect_to post_path(@post)
   end
+  
+  def body 
+    post = Post.find(params[:id])
+    render plain: post.description 
+  end 
 
 private
   # Use callbacks to share common setup or constraints between actions.
